@@ -1,0 +1,11 @@
+version: '2'
+services:
+  web:
+    image: "bolli-nginx"
+    ports:
+     - "1800:80"
+    environment:
+     - NGINX_HOST=foobar.com
+     - NGINX_PORT=80
+     - DOLLAR=$$
+    command: /bin/bash -c "envsubst < /tmp/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
