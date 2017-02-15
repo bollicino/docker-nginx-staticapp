@@ -1,0 +1,9 @@
+server {
+    listen ${NGINX_PORT};
+    server_name ${NGINX_HOST};
+    root /static-app;
+    index index.html;
+    if (${DOLLAR}http_x_forwarded_proto != "https") {
+    	rewrite ^(.*)${DOLLAR} https://${DOLLAR}server_name${DOLLAR}1 permanent;
+    }
+}
