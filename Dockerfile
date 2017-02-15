@@ -10,7 +10,7 @@ RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC64107
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /static-app
-COPY default.template /tmp
+COPY default.template /etc/nginx/conf.d/
 WORKDIR /static-app
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
